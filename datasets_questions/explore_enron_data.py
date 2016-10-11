@@ -25,8 +25,8 @@ poiNames = [line.rstrip('\n') for line in open("../final_project/poi_names.txt")
 #names_file = pickle.load(open(, "r"))
 
 #print features
-#for d in enron_data["SKILLING JEFFREY K"]:
-#    print d
+for d in enron_data["SKILLING JEFFREY K"]:
+    print d
 
 #print number of features
 featureCount = 0
@@ -34,10 +34,11 @@ for d in enron_data["SKILLING JEFFREY K"]:
     featureCount += 1
 print "Feature Count:" , featureCount
 
-#size of data set
+#size of data set and/or Names
 count = 0
 for d in enron_data:
     count += 1
+    #print d
 print "Record Count: " , count
 
 #How many POIs in Enron Data
@@ -54,3 +55,12 @@ for l in poiNames:
     countPoisFromNames += 1
 countPoisFromNames -= 2
 print "POIs from Names: " , countPoisFromNames
+
+#Total value of the stock belonging to James Prentice?
+print "James Prentice Total Stock Value: " , enron_data["PRENTICE JAMES"]["total_stock_value"]
+
+#How many email messages do we have from Wesley Colwell to persons of interest?
+print "Wesley Colwell Total Email Msgs: " , enron_data["COLWELL WESLEY"]["from_this_person_to_poi"]
+
+#What's the value of stock options exercised by Jeffrey K Skilling?
+print "Exercised Stock Options Jeffrey K Skilling: " , enron_data["SKILLING JEFFREY K"]["exercised_stock_options"]
