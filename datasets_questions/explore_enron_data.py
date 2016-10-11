@@ -20,3 +20,18 @@ import pickle
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
 
+#print enron_data
+
+#size of data set
+count = 0
+for d in enron_data:
+    count += 1
+print "Record Count: " , count
+
+#How many POIs
+countPois = 0
+for d in enron_data:
+    if enron_data[d]["poi"]:
+        countPois += 1
+print "POI count: " , countPois
+
