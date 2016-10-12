@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+#------------------------
+# Chris Anatalio
+# anataliocs@gmail.com
+#------------------------
+
 """ 
     Starter code for exploring the Enron dataset (emails + finances);
     loads up the dataset (pickled dict of dicts).
@@ -24,43 +29,87 @@ poiNames = [line.rstrip('\n') for line in open("../final_project/poi_names.txt")
 
 #names_file = pickle.load(open(, "r"))
 
-#print features
+#TOGGLE
+#ALL Data as JSON
+#------------------------
+#print enron_data
+
+#TOGGLE
+#All FEATURES
+#------------------------
 for d in enron_data["SKILLING JEFFREY K"]:
     print d
 
-#print number of features
+#Number of features
+#------------------------
 featureCount = 0
 for d in enron_data["SKILLING JEFFREY K"]:
     featureCount += 1
 print "Feature Count:" , featureCount
 
+
+#TOGGLE
 #size of data set and/or Names
+#uncomment print d to print out NAMES
+#------------------------
 count = 0
 for d in enron_data:
     count += 1
     #print d
 print "Record Count: " , count
 
+
 #How many POIs in Enron Data
+#------------------------
 countPois = 0
 for d in enron_data:
     if enron_data[d]["poi"]:
         countPois += 1
 print "POI count: " , countPois
 
-#Total POIs
 
+#Total POIs
+#------------------------
 countPoisFromNames = 0
 for l in poiNames:
     countPoisFromNames += 1
 countPoisFromNames -= 2
 print "POIs from Names: " , countPoisFromNames
 
+
 #Total value of the stock belonging to James Prentice?
+#------------------------
 print "James Prentice Total Stock Value: " , enron_data["PRENTICE JAMES"]["total_stock_value"]
 
 #How many email messages do we have from Wesley Colwell to persons of interest?
+#------------------------
 print "Wesley Colwell Total Email Msgs: " , enron_data["COLWELL WESLEY"]["from_this_person_to_poi"]
 
 #What's the value of stock options exercised by Jeffrey K Skilling?
+#------------------------
 print "Exercised Stock Options Jeffrey K Skilling: " , enron_data["SKILLING JEFFREY K"]["exercised_stock_options"]
+
+
+#Who took home the most money
+#------------------------
+print "Biggest take home"
+print "Lay: " , enron_data["LAY KENNETH L"]["total_payments"]
+print "Skilling: " , enron_data["SKILLING JEFFREY K"]["total_payments"]
+print "Fastow: " , enron_data["FASTOW ANDREW S"]["total_payments"]
+
+
+#How many have a defined salary
+#------------------------
+definedSalary = 0
+for d in enron_data:
+    if enron_data[d]["salary"] != "NaN":
+        definedSalary += 1
+print "Defined Salary count: " , definedSalary
+
+#How many have a known email
+#------------------------
+knownEmail = 0
+for d in enron_data:
+    if enron_data[d]["email_address"] != "NaN":
+        knownEmail += 1
+print "Known Email count: " , knownEmail
