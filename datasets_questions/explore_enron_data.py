@@ -70,6 +70,7 @@ if printAllNames:
 featureCount = 0
 for d in enron_data["SKILLING JEFFREY K"]:
     featureCount += 1
+print ""
 print "Feature Count:" , featureCount
 
 
@@ -78,6 +79,7 @@ print "Feature Count:" , featureCount
 count = 0
 for d in enron_data:
     count += 1
+print ""
 print "Record Count: " , count
 
 
@@ -87,6 +89,7 @@ countPois = 0
 for d in enron_data:
     if enron_data[d]["poi"]:
         countPois += 1
+print ""
 print "POI count: " , countPois
 
 
@@ -96,11 +99,13 @@ countPoisFromNames = 0
 for l in poiNames:
     countPoisFromNames += 1
 countPoisFromNames -= 2
+print ""
 print "POIs from Names: " , countPoisFromNames
 
 
 # Total value of the stock belonging to James Prentice?
 #------------------------
+print ""
 print "James Prentice Total Stock Value: " , enron_data["PRENTICE JAMES"]["total_stock_value"]
 
 # How many email messages do we have from Wesley Colwell to persons of interest?
@@ -114,6 +119,7 @@ print "Exercised Stock Options Jeffrey K Skilling: " , enron_data["SKILLING JEFF
 
 # Who took home the most money
 #------------------------
+print ""
 print "Biggest take home"
 print "     Lay Takehome: " , enron_data["LAY KENNETH L"]["total_payments"]
 print "     Skilling Takehome: " , enron_data["SKILLING JEFFREY K"]["total_payments"]
@@ -126,6 +132,7 @@ definedSalary = 0
 for d in enron_data:
     if enron_data[d]["salary"] != "NaN":
         definedSalary += 1
+print ""
 print "Defined Salary count: " , definedSalary
 
 # How many have a known email
@@ -134,6 +141,7 @@ knownEmail = 0
 for d in enron_data:
     if enron_data[d]["email_address"] != "NaN":
         knownEmail += 1
+print ""
 print "Known Email count: " , knownEmail
 
 # How many people in the E+F dataset have "NaN" for their total payments?
@@ -142,6 +150,7 @@ nanTotalPayment = 0
 for d in enron_data:
     if enron_data[d]["total_payments"] == "NaN":
         nanTotalPayment += 1
+print ""
 print "Unknown Total Payment count: " , nanTotalPayment
 print "% of Total Dataset" , ( float(nanTotalPayment) / float(count) ) * 100
 
@@ -153,5 +162,12 @@ for d in enron_data:
     if enron_data[d]["poi"]:
         if enron_data[d]["total_payments"] == "NaN":
             nanTotalPaymentPois += 1
+print ""
 print "Unknown Total Payment of POIs count: " , nanTotalPaymentPois
-print "% of Total POIs" , ( float(nanTotalPaymentPois) / float(countPois) ) * 100
+print "% of Total POIs with NaN Total Payment" , ( float(nanTotalPaymentPois) / float(countPois) ) * 100
+
+
+# Add 10 POIs in the E+F dataset that have NaN for their total payments
+print ""
+print "If we add 10 POIs with NaN for total payment:"
+print "     % of Total POIs with Unknown Total Payment" , ( float(nanTotalPaymentPois+10) / float(countPois+10) ) * 100
