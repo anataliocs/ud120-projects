@@ -1,4 +1,4 @@
-ud120-projects
+Chris Anatalio Machine Learning Nanodegree
 ==============
 
-Starter project code for students taking Udacity ud120
+Working code for Udacity Machine Learning Nanodegree: https://profiles.udacity.com/u/chrisanatalio 
